@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bag</title>
+<link rel="stylesheet" href="/public/Cart/Cart.css">
+</head>
+<body>
+
+  <!-- ================= CART OVERLAY ================= -->
+<div class="cart-overlay" onclick="closeCart()"></div>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="cart-drawer">
+
+  <!-- HEADER -->
+  <div class="cart-header">
+    <h2>Bag</h2>
+    <span class="close-btn" onclick="closeCart()">✕</span>
+  </div>
+
+  <!-- CART ITEM -->
+  <div class="cart-item">
+    <img src="/public/Home/imgc1.jpg" alt="product">
+
+    <div class="cart-item-info">
+      <span class="price-drop">Price dropped by ₹311 ↘</span>
+
+      <h4>FableStreet</h4>
+      <p>Cotton Linen Stripes Shirt</p>
+
+      <div class="cart-select">
+        <select>
+          <option>Size M</option>
+        </select>
+        <select>
+          <option>Qty 1</option>
+        </select>
+      </div>
+
+      <p class="return-text">7 Day Return</p>
+    </div>
+  </div>
+
+  <!-- PRICE ROW -->
+  <div class="cart-pay-row">
+    <span>You Pay <b>₹1,376</b></span>
+    <span class="discount">47% off <s>₹2,595</s></span>
+  </div>
+
+  <!-- COUPON -->
+  <div class="cart-coupon">
+    <b>Coupons</b>
+    <span>Apply Coupons & save extra ›</span>
+  </div>
+
+  <!-- PRICE SUMMARY -->
+  <div class="cart-summary">
+    <h4>Price Summary</h4>
+
+    <div class="row">
+      <span>Bag Total (1 item)</span>
+      <span>₹2,595</span>
+    </div>
+
+    <div class="row">
+      <span>Discount on MRP</span>
+      <span class="green">-₹1,219</span>
+    </div>
+
+    <div class="saved">
+      You saved ₹1219 on this purchase
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="cart-footer">
+    <div>
+      <b>₹1,376</b><br>
+      <small>View Details</small>
+    </div>
+    <button class="buy-btn">Proceed to Buy</button>
+  </div>
+
+</div>

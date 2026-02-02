@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Silk Saree | AABHIRA Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="product-reviews.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-header">
+        <div class="top-panel">
+            <div class="panel-content">
+                <div class="panel-right">
+                    <a href="#"><i class="fa-solid fa-mobile-screen"></i> Get App</a>
+                    <span>|</span>
+                    <a href="#"><i class="fa-solid fa-location-dot"></i> Store Locator</a>
+                    <span>|</span>
+                    <a href="#"><i class="fa-solid fa-truck"></i> Track Order</a>
+                    <span>|</span>
+                    <a href="#"><i class="fa-solid fa-headset"></i> 24x7 Support</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-navbar">
+            <!-- LOGO -->
+            <a href="/public/Home/Home.html" class="navbar-logo">
+                <svg width="140" height="45" viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="28" font-size="30" font-weight="800" fill="#ff3f8e">AABHIRA</text>
+                    <text x="0" y="55" font-size="26" font-weight="700" fill="#111">FASHION</text>
+                </svg>
+            </a>
+
+            <!-- SEARCH -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for dresses, sarees, kurtas...">
+                <button id="searchIcon"><i class="fa fa-search"></i></button>
+            </div>
+
+            <!-- MAIN NAVIGATION -->
+            <ul class="nav-links">
+                <li><a href="#" class="active">Women</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Ethnic Wear</a></li>
+                <li><a href="#">Western Wear</a></li>
+                <li class="dropdown">
+                    <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#"><i class="fas fa-tag"></i> Sale</a>
+                        <a href="#"><i class="fas fa-newspaper"></i> New Arrivals</a>
+                        <a href="#"><i class="fas fa-star"></i> Best Sellers</a>
+                        <a href="#"><i class="fas fa-tshirt"></i> Designers</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- USER ACTIONS -->
+            <div class="nav-actions">
+                <!-- ACCOUNT -->
+                <div class="account-dropdown-wrapper">
+                    <button class="account-trigger">
+                        <i class="fas fa-user-circle"></i>
+                        <div class="account-text">
+                            <span>Hello, User</span>
+                            <span class="account-title">Account</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="account-dropdown">
+                        <div class="dropdown-section">
+                            <h4><i class="fas fa-user"></i> My Account</h4>
+                            <a href="/public/login/login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html?register=true"><i class="fas fa-user-plus"></i> Register</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4><i class="fas fa-shopping-bag"></i> Orders</h4>
+                            <a href="#"><i class="fas fa-box"></i> My Orders</a>
+                            <a href="#"><i class="fas fa-undo-alt"></i> Returns & Exchanges</a>
+                            <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4><i class="fas fa-crown"></i> Membership</h4>
+                            <a href="#"><i class="fas fa-gem"></i> AABHIRA Prime</a>
+                            <a href="#"><i class="fas fa-gift"></i> Gift Cards</a>
+                            <a href="#"><i class="fas fa-bell"></i> Notifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WISHLIST -->
+                <button class="nav-icon" id="wishlistIcon" title="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </button>
+
+                <!-- CART -->
+                <button class="nav-icon cart-icon" id="bagIcon" title="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+                <a href="#" class="btn btn-primary">Continue Shopping</a>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartTotal">₹0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+            <button class="btn btn-outline btn-block" id="continueShopping">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Ethnic Wear</a></li>
+                <li><a href="#">Sarees</a></li>
+                <li class="active">Designer Silk Saree with Blouse</li>
+            </ol>
+            <div class="breadcrumb-actions">
+                <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                <button class="print-btn"><i class="fas fa-print"></i> Print</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Product Section -->
+    <main class="product-container">
+        <div class="container">
+            <!-- Product Alert -->
+            <div class="product-alert">
+                <i class="fas fa-bolt"></i>
+                <span>Limited Time Offer: Buy 1 Get 1 Free Blouse | Free Shipping | 30-Day Return</span>
+                <button class="close-alert"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="product-main-grid">
+                <!-- Left: Product Images -->
+                <div class="product-gallery">
+                    <!-- Main Image -->
+                    <div class="main-image-container">
+                        <div class="image-actions">
+                            <button class="image-action-btn" title="360° View"><i class="fas fa-sync-alt"></i></button>
+                            <button class="image-action-btn" title="Fullscreen"><i class="fas fa-expand"></i></button>
+                            <button class="image-action-btn" title="Compare"><i class="fas fa-exchange-alt"></i></button>
+                        </div>
+                        <img id="mainProductImage" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop" 
+                             alt="Designer Silk Saree with Blouse" 
+                             class="main-product-image">
+                        <div class="image-badges">
+                            <span class="badge new">NEW</span>
+                            <span class="badge trending">TRENDING</span>
+                            <span class="badge exclusive">EXCLUSIVE</span>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div class="thumbnail-container">
+                        <button class="thumbnail-nav prev"><i class="fas fa-chevron-left"></i></button>
+                        <div class="thumbnails-scroll">
+                            <div class="thumbnails">
+                                <div class="thumb active" data-image="1">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&auto=format&fit=crop" alt="Front View">
+                                    <div class="thumb-overlay"><i class="fas fa-search"></i></div>
+                                </div>
+                                <div class="thumb" data-image="2">
+                                    <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=200&auto=format&fit=crop" alt="Back View">
+                                    <div class="thumb-overlay"><i class="fas fa-search"></i></div>
+                                </div>
+                                <div class="thumb" data-image="3">
+                                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&auto=format&fit=crop" alt="Detail View">
+                                    <div class="thumb-overlay"><i class="fas fa-search"></i></div>
+                                </div>
+                                <div class="thumb" data-image="4">
+                                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=200&auto=format&fit=crop" alt="Fabric Close-up">
+                                    <div class="thumb-overlay"><i class="fas fa-search"></i></div>
+                                </div>
+                                <div class="thumb" data-image="5">
+                                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=200&auto=format&fit=crop" alt="Model Wearing">
+                                    <div class="thumb-overlay"><i class="fas fa-search"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="thumbnail-nav next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <!-- Model Info -->
+                    <div class="model-info">
+                        <div class="model-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c113a1c0?w=50&auto=format&fit=crop" alt="Model">
+                        </div>
+                        <div>
+                            <strong>Model is wearing Size M</strong>
+                            <div class="model-stats">
+                                Height: 5'7" | Size: UK 10 | Color: Royal Blue
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Actions -->
+                    <div class="product-share">
+                        <span>Share this product:</span>
+                        <div class="social-share">
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="link-copy"><i class="fas fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: Product Details -->
+                <div class="product-details">
+                    <!-- Product Header -->
+                    <div class="product-header">
+                        <div class="category-badge">DESIGNER WEAR</div>
+                        <h1 class="product-title">Designer Silk Saree with Embroidered Blouse</h1>
+                        <div class="product-subtitle">Handwoven Pure Silk • Zari Work • Designer Collection</div>
+                        
+                        <div class="product-meta">
+                            <div class="brand-section">
+                                <span class="by">by</span>
+                                <a href="#" class="brand-link">
+                                    <div class="brand-logo">S</div>
+                                    <span class="brand-name">Sabyasachi</span>
+                                </a>
+                                <span class="verified-badge"><i class="fas fa-check-circle"></i> Authentic Designer</span>
+                            </div>
+                            
+                            <div class="product-sku">
+                                SKU: <code>SBY-SILK-2024-BLUE</code>
+                                <button class="copy-sku"><i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating & Reviews -->
+                    <div class="product-rating-section">
+                        <div class="rating-overview">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-details">
+                                <span class="rating-value">4.7</span>
+                                <span class="rating-text">out of 5</span>
+                                <a href="#reviews" class="reviews-link">(1,248 reviews)</a>
+                            </div>
+                            <div class="rating-badges">
+                                <span class="badge bestseller"><i class="fas fa-crown"></i> Bestseller</span>
+                                <span class="badge editor-choice"><i class="fas fa-award"></i> Editor's Choice</span>
+                            </div>
+                        </div>
+                        
+                        <div class="rating-breakdown">
+                            <div class="rating-bar">
+                                <span>5 star</span>
+                                <div class="bar-container"><div class="bar" style="width: 68%"></div></div>
+                                <span>68%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>4 star</span>
+                                <div class="bar-container"><div class="bar" style="width: 22%"></div></div>
+                                <span>22%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>3 star</span>
+                                <div class="bar-container"><div class="bar" style="width: 6%"></div></div>
+                                <span>6%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>2 star</span>
+                                <div class="bar-container"><div class="bar" style="width: 3%"></div></div>
+                                <span>3%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>1 star</span>
+                                <div class="bar-container"><div class="bar" style="width: 1%"></div></div>
+                                <span>1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Section -->
+                    <div class="product-price-section">
+                        <div class="price-header">
+                            <span class="price-label">Your Price:</span>
+                            <span class="savings-badge">Save ₹5,000 (35% OFF)</span>
+                        </div>
+                        <div class="price-display">
+                            <div class="current-price-container">
+                                <span class="currency">₹</span>
+                                <span class="current-price">9,999</span>
+                                <span class="price-unit">only</span>
+                            </div>
+                            <div class="original-price">
+                                <span class="strike">₹14,999</span>
+                                <span class="mrp-label">MRP</span>
+                            </div>
+                        </div>
+                        <div class="price-extra">
+                            <span class="tax-info">Inclusive of all taxes</span>
+                            <span class="emi-info">EMI starting at ₹833/month</span>
+                        </div>
+                        <div class="offer-tags">
+                            <span class="offer-tag"><i class="fas fa-gift"></i> Free Blouse Piece</span>
+                            <span class="offer-tag"><i class="fas fa-bolt"></i> Limited Stock</span>
+                            <span class="offer-tag"><i class="fas fa-sync-alt"></i> 30-Day Return</span>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="variant-section">
+                        <label class="variant-label">Color: <span class="selected-color">Royal Blue</span></label>
+                        <div class="color-options">
+                            <div class="color-option active" data-color="royal-blue" data-image="1">
+                                <div class="color-swatch" style="background: #1e3a8a;"></div>
+                                <span class="color-name">Royal Blue</span>
+                            </div>
+                            <div class="color-option" data-color="maroon" data-image="2">
+                                <div class="color-swatch" style="background: #800000;"></div>
+                                <span class="color-name">Deep Maroon</span>
+                            </div>
+                            <div class="color-option" data-color="emerald" data-image="3">
+                                <div class="color-swatch" style="background: #047857;"></div>
+                                <span class="color-name">Emerald Green</span>
+                            </div>
+                            <div class="color-option" data-color="purple" data-image="4">
+                                <div class="color-swatch" style="background: #7c3aed;"></div>
+                                <span class="color-name">Regal Purple</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div class="variant-section">
+                        <label class="variant-label">Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="XS">
+                                <span class="size-value">XS</span>
+                            </div>
+                            <div class="size-option active" data-size="S">
+                                <span class="size-value">S</span>
+                            </div>
+                            <div class="size-option" data-size="M">
+                                <span class="size-value">M</span>
+                                <span class="popular-tag">Most Popular</span>
+                            </div>
+                            <div class="size-option" data-size="L">
+                                <span class="size-value">L</span>
+                            </div>
+                            <div class="size-option" data-size="XL">
+                                <span class="size-value">XL</span>
+                            </div>
+                        </div>
+                        <button class="size-chart-btn">
+                            <i class="fas fa-ruler-combined"></i> Size Chart
+                        </button>
+                        
+                        <!-- Size Guide -->
+                        <div class="size-guide" id="sizeGuide">
+                            <h4>Size Guide (in inches)</h4>
+                            <table class="size-table">
+                                <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        <th>Bust</th>
+                                        <th>Waist</th>
+                                        <th>Hip</th>
+                                        <th>Length</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>XS</td><td>32</td><td>26</td><td>35</td><td>5.5</td></tr>
+                                    <tr><td>S</td><td>34</td><td>28</td><td>37</td><td>5.5</td></tr>
+                                    <tr><td>M</td><td>36</td><td>30</td><td>39</td><td>5.5</td></tr>
+                                    <tr><td>L</td><td>38</td><td>32</td><td>41</td><td>5.5</td></tr>
+                                    <tr><td>XL</td><td>40</td><td>34</td><td>43</td><td>5.5</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Fit Options -->
+                    <div class="variant-section">
+                        <label class="variant-label">Fit Preference:</label>
+                        <div class="fit-options">
+                            <div class="fit-option active" data-fit="regular">
+                                <i class="fas fa-user"></i>
+                                <span>Regular Fit</span>
+                            </div>
+                            <div class="fit-option" data-fit="slim">
+                                <i class="fas fa-user-slender"></i>
+                                <span>Slim Fit</span>
+                            </div>
+                            <div class="fit-option" data-fit="oversized">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Oversized</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div class="key-features">
+                        <h3>Key Features</h3>
+                        <div class="features-grid">
+                            <div class="feature">
+                                <i class="fas fa-fan"></i>
+                                <span>Pure Silk Fabric</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-sparkles"></i>
+                                <span>Hand Embroidery</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-gem"></i>
+                                <span>Zari Work</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-palette"></i>
+                                <span>Color Fast</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tshirt"></i>
+                                <span>Blouse Included</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-weight"></i>
+                                <span>Light Weight</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Material & Care -->
+                    <div class="material-info">
+                        <h4><i class="fas fa-info-circle"></i> Material & Care</h4>
+                        <p><strong>Fabric:</strong> 100% Pure Mulberry Silk with Zari Border</p>
+                        <p><strong>Work:</strong> Hand-embroidered with sequins and beads</p>
+                        
+                        <div class="care-instructions">
+                            <div class="care-icon">
+                                <i class="fas fa-hand-sparkles"></i>
+                            </div>
+                            <div>
+                                <strong>Dry Clean Only</strong>
+                                <p>Do not machine wash. Iron on low heat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="delivery-info">
+                        <h3><i class="fas fa-shipping-fast"></i> Delivery Options</h3>
+                        <div class="delivery-options">
+                            <div class="delivery-option">
+                                <i class="fas fa-truck"></i>
+                                <div>
+                                    <strong>Standard Delivery</strong>
+                                    <p>Free • 4-7 Business Days</p>
+                                </div>
+                            </div>
+                            <div class="delivery-option">
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <strong>Express Delivery</strong>
+                                    <p>₹99 • 1-2 Business Days</p>
+                                </div>
+                            </div>
+                            <div class="delivery-option">
+                                <i class="fas fa-store"></i>
+                                <div>
+                                    <strong>Try & Buy</strong>
+                                    <p>Free • Try at home for 7 days</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="delivery-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Deliver to: <strong>Mumbai 400001</strong></span>
+                            <a href="#" class="change-location">Change</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Buy Box -->
+                <div class="buy-box">
+                    <div class="buy-card">
+                        <!-- Stock Status -->
+                        <div class="stock-status in-stock">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>In Stock</strong>
+                                <p>Order within 3 hrs for same-day dispatch</p>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="quantity-selector">
+                            <label>Quantity:</label>
+                            <div class="quantity-control">
+                                <button class="qty-btn minus"><i class="fas fa-minus"></i></button>
+                                <input type="number" id="quantity" value="1" min="1" max="5">
+                                <button class="qty-btn plus"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <div class="stock-left">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Only 8 left in stock
+                            </div>
+                        </div>
+
+                        <!-- Total Price -->
+                        <div class="total-price">
+                            <span>Total:</span>
+                            <span class="total-amount">₹9,999</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="btn btn-primary btn-lg add-to-cart-btn">
+                                <i class="fas fa-cart-plus"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                            <button class="btn btn-secondary btn-lg buy-now-btn">
+                                <i class="fas fa-bolt"></i>
+                                <span>Buy Now</span>
+                            </button>
+                            <button class="btn btn-outline btn-lg wishlist-btn" id="addToWishlist">
+                                <i class="far fa-heart"></i>
+                                <span>Add to Wishlist</span>
+                            </button>
+                        </div>
+
+                        <!-- Try Before You Buy -->
+                        <div class="try-before-buy">
+                            <i class="fas fa-home"></i>
+                            <span><strong>Try Before You Buy:</strong> Free home trial available</span>
+                            <a href="#">Learn More</a>
+                        </div>
+
+                        <!-- Secure Checkout -->
+                        <div class="secure-checkout">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure checkout</span>
+                        </div>
+
+                        <!-- Warranty & Support -->
+                        <div class="warranty-section">
+                            <div class="warranty-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Quality Assured</span>
+                            </div>
+                            <div class="warranty-item">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>30-Day Returns</span>
+                            </div>
+                            <div class="warranty-item">
+                                <i class="fas fa-headset"></i>
+                                <span>Style Assistance</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Options -->
+                        <div class="payment-options">
+                            <h4>Payment Options:</h4>
+                            <div class="payment-icons">
+                                <i class="fab fa-cc-visa" title="Visa"></i>
+                                <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                                <i class="fab fa-cc-amex" title="American Express"></i>
+                                <i class="fab fa-cc-paypal" title="PayPal"></i>
+                                <i class="fas fa-university" title="Net Banking"></i>
+                            </div>
+                        </div>
+
+                        <!-- Trust Signals -->
+                        <div class="trust-signals">
+                            <div class="trust-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Free Shipping</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Authentic</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-award"></i>
+                                <span>Best Price</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Style Advice Section -->
+                    <div class="style-advice">
+                        <h4><i class="fas fa-star"></i> Style This With</h4>
+                        <div class="style-items">
+                            <div class="style-item">
+                                <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=100&auto=format&fit=crop" alt="Jewelry">
+                                <span>Statement Jewelry</span>
+                            </div>
+                            <div class="style-item">
+                                <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=100&auto=format&fit=crop" alt="Heels">
+                                <span>Heels</span>
+                            </div>
+                            <div class="style-item">
+                                <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=100&auto=format&fit=crop" alt="Clutch">
+                                <span>Clutch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="description">Description</button>
+                <button class="tab-btn" data-tab="specifications">Specifications</button>
+                <button class="tab-btn" data-tab="reviews">Reviews (1,248)</button>
+                <button class="tab-btn" data-tab="qna">Q&A (89)</button>
+                <button class="tab-btn" data-tab="styling">Styling Tips</button>
+                <button class="tab-btn" data-tab="care">Care Guide</button>
+            </div>
+
+            <div class="tabs-content">
+                <!-- Description Tab -->
+                <div class="tab-pane active" id="description">
+                    <div class="description-content">
+                        <div class="description-section">
+                            <h3>Elegance Redefined</h3>
+                            <p>This exquisite designer silk saree is crafted for the modern woman who appreciates traditional craftsmanship with contemporary elegance. The rich royal blue fabric adorned with intricate zari work makes it perfect for weddings, festivals, and special occasions.</p>
+                            
+                            <div class="description-features">
+                                <div class="feature-highlight">
+                                    <i class="fas fa-hand-sparkles"></i>
+                                    <div>
+                                        <h4>Handcrafted Excellence</h4>
+                                        <p>Each saree is individually hand-embroidered by master artisans, taking approximately 15 days to complete.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-highlight">
+                                    <i class="fas fa-gem"></i>
+                                    <div>
+                                        <h4>Premium Materials</h4>
+                                        <p>Made from 100% pure mulberry silk with real zari (gold thread) borders and hand-stitched sequins.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-highlight">
+                                    <i class="fas fa-tshirt"></i>
+                                    <div>
+                                        <h4>Complete Set</h4>
+                                        <p>Comes with matching embroidered blouse piece (unstitched) and fall material.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="description-video">
+                                <div class="video-container">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop" alt="Product Video">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div class="tab-pane" id="specifications">
+                    <div class="specs-grid">
+                        <div class="specs-category">
+                            <h4><i class="fas fa-ruler"></i> Measurements</h4>
+                            <table>
+                                <tr><td>Saree Length</td><td>5.5 meters</td></tr>
+                                <tr><td>Blouse Length</td><td>0.8 meters</td></tr>
+                                <tr><td>Border Width</td><td>6 inches</td></tr>
+                                <tr><td>Weight</td><td>850 grams</td></tr>
+                                <tr><td>Pallu Length</td><td>1.2 meters</td></tr>
+                            </table>
+                        </div>
+                        <div class="specs-category">
+                            <h4><i class="fas fa-palette"></i> Fabric Details</h4>
+                            <table>
+                                <tr><td>Material</td><td>100% Pure Silk</td></tr>
+                                <tr><td>Weave</td><td>Handwoven</td></tr>
+                                <tr><td>Border</td><td>Zari Work</td></tr>
+                                <tr><td>Work Type</td><td>Hand Embroidery</td></tr>
+                                <tr><td>Color</td><td>Color Fast</td></tr>
+                            </table>
+                        </div>
+                        <div class="specs-category">
+                            <h4><i class="fas fa-box-open"></i> Package Includes</h4>
+                            <table>
+                                <tr><td>Saree</td><td>1 Piece</td></tr>
+                                <tr><td>Blouse Piece</td><td>Unstitched</td></tr>
+                                <tr><td>Fall Material</td><td>Included</td></tr>
+                                <tr><td>Care Instructions</td><td>Provided</td></tr>
+                                <tr><td>Brand Tag</td><td>Authenticity Card</td></tr>
+                            </table>
+                        </div>
+                        <div class="specs-category">
+                            <h4><i class="fas fa-industry"></i> Craft Details</h4>
+                            <table>
+                                <tr><td>Origin</td><td>Varanasi, India</td></tr>
+                                <tr><td>Craft Type</td><td>Banarasi Silk</td></tr>
+                                <tr><td>Making Time</td><td>15-20 days</td></tr>
+                                <tr><td>Artisan</td><td>Master Weavers</td></tr>
+                                <tr><td>Certification</td><td>Handloom Mark</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div class="tab-pane" id="reviews">
+                    <div class="reviews-container">
+                        <div class="review-filters">
+                            <select class="filter-select">
+                                <option>All Reviews</option>
+                                <option>5 Star</option>
+                                <option>4 Star</option>
+                                <option>With Images</option>
+                                <option>Verified Purchase</option>
+                            </select>
+                            <button class="btn btn-primary write-review-btn"><i class="fas fa-pen"></i> Write a Review</button>
+                        </div>
+
+                        <div class="review-cards">
+                            <div class="review-card featured">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <img src="https://i.pravatar.cc/40?img=1" alt="Priya Sharma" class="reviewer-avatar">
+                                        <div>
+                                            <div class="reviewer-name">Priya Sharma</div>
+                                            <div class="review-verified"><i class="fas fa-check-circle"></i> Verified Purchase</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-meta">
+                                        <div class="review-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="review-date">October 15, 2023</div>
+                                    </div>
+                                </div>
+                                <h4 class="review-title">Absolutely stunning! Received so many compliments</h4>
+                                <p class="review-content">The quality is exceptional. The silk is pure and the embroidery is flawless. Wore it to my sister's wedding and everyone was asking where I got it from. Perfect fit and the color is even more beautiful in person.</p>
+                                
+                                <div class="review-images">
+                                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&auto=format&fit=crop" alt="Review Image">
+                                    <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=200&auto=format&fit=crop" alt="Review Image">
+                                </div>
+                                
+                                <div class="review-actions">
+                                    <button class="helpful-btn"><i class="fas fa-thumbs-up"></i> Helpful (142)</button>
+                                    <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+                                </div>
+                            </div>
+
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <img src="https://i.pravatar.cc/40?img=2" alt="Anjali Patel" class="reviewer-avatar">
+                                        <div>
+                                            <div class="reviewer-name">Anjali Patel</div>
+                                            <div class="review-verified"><i class="fas fa-check-circle"></i> Verified Purchase</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-meta">
+                                        <div class="review-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <div class="review-date">October 10, 2023</div>
+                                    </div>
+                                </div>
+                                <h4 class="review-title">Beautiful but runs slightly small</h4>
+                                <p class="review-content">The saree is gorgeous and the quality is premium. However, I usually wear size M but had to exchange for L. Recommend ordering one size up. Customer service was excellent for the exchange.</p>
+                                
+                                <div class="review-response">
+                                    <div class="response-header">
+                                        <i class="fas fa-store"></i>
+                                        <strong>Seller Response</strong>
+                                        <span class="response-date">October 11, 2023</span>
+                                    </div>
+                                    <p>Thank you for your feedback, Anjali! We're glad you liked the product. For future reference, our size chart is available on the product page. We're happy the exchange process was smooth!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline load-more-reviews">Load More Reviews</button>
+                    </div>
+                </div>
+
+                <!-- Styling Tips Tab -->
+                <div class="tab-pane" id="styling">
+                    <div class="styling-tips">
+                        <h3>How to Style This Saree</h3>
+                        <div class="styling-grid">
+                            <div class="styling-tip">
+                                <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=300&auto=format&fit=crop" alt="Jewelry">
+                                <h4>Accessorize Right</h4>
+                                <p>Pair with statement gold jewelry - chandelier earrings, choker necklace, and bangles.</p>
+                            </div>
+                            <div class="styling-tip">
+                                <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=300&auto=format&fit=crop" alt="Hairstyle">
+                                <h4>Hairstyle Ideas</h4>
+                                <p>Opt for a sleek bun with gajra or loose curls for a modern look.</p>
+                            </div>
+                            <div class="styling-tip">
+                                <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=300&auto=format&fit=crop" alt="Footwear">
+                                <h4>Footwear</h4>
+                                <p>Wear with embellished heels or traditional mojris for complete ethnic look.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Care Guide Tab -->
+                <div class="tab-pane" id="care">
+                    <div class="care-guide">
+                        <h3>Care & Maintenance Guide</h3>
+                        <div class="care-instructions-detailed">
+                            <div class="care-step">
+                                <i class="fas fa-hand-sparkles"></i>
+                                <h4>Dry Cleaning</h4>
+                                <p>Always dry clean only. Do not attempt to wash at home as it may damage the delicate embroidery.</p>
+                            </div>
+                            <div class="care-step">
+                                <i class="fas fa-temperature-low"></i>
+                                <h4>Ironing</h4>
+                                <p>Iron on low heat setting. Place a cotton cloth between the iron and saree to prevent direct heat.</p>
+                            </div>
+                            <div class="care-step">
+                                <i class="fas fa-box"></i>
+                                <h4>Storage</h4>
+                                <p>Store in a cool, dry place. Wrap in muslin cloth to allow fabric to breathe. Avoid plastic covers.</p>
+                            </div>
+                            <div class="care-step">
+                                <i class="fas fa-wind"></i>
+                                <h4>Air Out</h4>
+                                <p>Air out the saree periodically to prevent moisture buildup and maintain freshness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete The Look -->
+    <section class="bundle-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                Complete The Look
+            </h2>
+            <div class="bundle-container">
+                <div class="bundle-products">
+                    <div class="bundle-product checked">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=150&auto=format&fit=crop" alt="Saree">
+                        <div class="bundle-checkbox">
+                            <input type="checkbox" checked>
+                        </div>
+                    </div>
+                    <div class="bundle-plus">+</div>
+                    <div class="bundle-product checked">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=150&auto=format&fit=crop" alt="Jewelry Set">
+                        <div class="bundle-checkbox">
+                            <input type="checkbox" checked>
+                        </div>
+                    </div>
+                    <div class="bundle-plus">+</div>
+                    <div class="bundle-product">
+                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=150&auto=format&fit=crop" alt="Clutch">
+                        <div class="bundle-checkbox">
+                            <input type="checkbox">
+                        </div>
+                    </div>
+                </div>
+                <div class="bundle-summary">
+                    <div class="bundle-price">
+                        <div class="price-breakdown">
+                            <span>Total Price: </span>
+                            <span class="total-price">₹12,499</span>
+                            <span class="original-price">₹17,498</span>
+                        </div>
+                        <div class="savings">Save ₹4,999</div>
+                    </div>
+                    <button class="btn btn-primary btn-lg add-bundle-btn">
+                        <i class="fas fa-cart-plus"></i>
+                        Add All to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-eye"></i>
+                    Customers who viewed this also viewed
+                </h2>
+                <div class="section-controls">
+                    <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="products-slider">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&auto=format&fit=crop" alt="Designer Lehenga">
+                        <div class="product-badges">
+                            <span class="badge new">NEW</span>
+                            <span class="badge discount">-30%</span>
+                        </div>
+                        <button class="quick-view-btn" data-id="2">
+                            <i class="fas fa-eye"></i> Quick View
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Designer Lehenga Set</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(4.9 • 856)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹14,999</span>
+                            <span class="original-price">₹21,499</span>
+                        </div>
+                        <button class="btn-add-to-cart" data-id="2">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=300&auto=format&fit=crop" alt="Anarkali Suit">
+                        <div class="product-badges">
+                            <span class="badge bestseller">BESTSELLER</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Anarkali Suit Set</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(4.5 • 1,234)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹7,999</span>
+                            <span class="original-price">₹11,999</span>
+                        </div>
+                        <button class="btn-add-to-cart" data-id="3">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=300&auto=format&fit=crop" alt="Kurti Set">
+                        <div class="product-badges">
+                            <span class="badge featured">CASUAL</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Printed Kurti with Dupatta</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(4.7 • 2,145)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹2,499</span>
+                            <span class="original-price">₹3,999</span>
+                        </div>
+                        <button class="btn-add-to-cart" data-id="4">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=300&auto=format&fit=crop" alt="Men's Kurta">
+                        <div class="product-badges">
+                            <span class="badge premium">MEN</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Men's Silk Kurta Set</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(4.6 • 987)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹5,999</span>
+                            <span class="original-price">₹8,499</span>
+                        </div>
+                        <button class="btn-add-to-cart" data-id="5">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kids Section -->
+    <section class="kids-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-child"></i>
+                Matching Kids Collection
+            </h2>
+            <div class="kids-products">
+                <div class="kid-product">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=250&auto=format&fit=crop" alt="Kids Lehenga">
+                    <h4>Girl's Lehenga Set</h4>
+                    <div class="kid-price">₹3,999</div>
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                </div>
+                <div class="kid-product">
+                    <img src="https://images.unsplash.com/photo-1585487000160-6eb9ce6b5a53?w=250&auto=format&fit=crop" alt="Kids Kurta">
+                    <h4>Boy's Kurta Set</h4>
+                    <div class="kid-price">₹2,999</div>
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-question-circle"></i>
+                Frequently Asked Questions
+            </h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is the blouse piece stitched or unstitched?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        The blouse piece comes unstitched to allow for perfect tailoring according to your measurements.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I get this saree altered?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we offer alteration services for an additional charge. Please contact customer support after purchase.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How should I store this saree?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Store in a cool, dry place wrapped in muslin cloth. Avoid plastic covers as they can trap moisture.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the return policy?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We offer 30-day returns for unworn items with original tags. Free return shipping is included.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer international shipping?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we ship worldwide. Shipping charges and delivery times vary by country.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Style Consultant Button -->
+    <button class="live-chat-btn" id="styleConsultantBtn">
+        <i class="fas fa-user-tie"></i>
+        <span>Style Consultant</span>
+    </button>
+
+<footer class="fashion-footer">
+    <div class="footer-back-top">
+        <a href="#" class="back-to-top">
+            <span class="arrow">↑</span> Back to top
+        </a>
+    </div>
+    
+    <div class="footer-main">
+        <div class="footer-column">
+            <h4 class="column-title">Get to Know Us</h4>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4 class="column-title">Connect with Us</h4>
+            <ul class="footer-links">
+                <li><a href="#"><span class="social-icon">📱</span> Facebook</a></li>
+                <li><a href="#"><span class="social-icon">📸</span> Instagram</a></li>
+                <li><a href="#"><span class="social-icon">🐦</span> Twitter</a></li>
+                <li><a href="#"><span class="social-icon">🎬</span> TikTok</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4 class="column-title">Make Money with Us</h4>
+            <ul class="footer-links">
+                <li><a href="#">Sell on Aabhira</a></li>
+                <li><a href="#">Become a Seller</a></li>
+                <li><a href="#">Affiliate Program</a></li>
+                <li><a href="#">Brand Partnerships</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4 class="column-title">Let Us Help You</h4>
+            <ul class="footer-links">
+                <li><a href="#">Your Account</a></li>
+                <li><a href="#">Returns Centre</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Shipping Info</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-middle">
+        <div class="brand-logo">AABHIRA<span class="gold">-FASHION</span></div>
+        
+        <div class="footer-selectors">
+            <div class="selector-group">
+                <span class="selector-label">Language</span>
+                <select class="fashion-select">
+                    <option>English</option>
+                    <option>हिन्दी</option>
+                    <option>Español</option>
+                </select>
+            </div>
+            
+            <div class="selector-group">
+                <span class="selector-label">Country</span>
+                <select class="fashion-select">
+                    <option>🇮🇳 India</option>
+                    <option>🇺🇸 United States</option>
+                    <option>🇬🇧 United Kingdom</option>
+                    <option>🇦🇪 UAE</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="service-blocks">
+            <div class="service-block">
+                <div class="service-icon">📚</div>
+                <h5>Aabhira Books</h5>
+                <p class="service-desc">Fashion Books & Magazines</p>
+            </div>
+            
+            <div class="service-block">
+                <div class="service-icon">☁️</div>
+                <h5>Cloud Services</h5>
+                <p class="service-desc">Fashion Tech Solutions</p>
+            </div>
+            
+            <div class="service-block">
+                <div class="service-icon">🎧</div>
+                <h5>Style Audio</h5>
+                <p class="service-desc">Fashion Podcasts</p>
+            </div>
+            
+            <div class="service-block">
+                <div class="service-icon">🎬</div>
+                <h5>Aabhira Studios</h5>
+                <p class="service-desc">Fashion Films</p>
+            </div>
+        </div>
+        
+        <div class="footer-legal">
+            <p class="copyright">© 2024 AABHIRA-FASHION. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Interest-Based Ads</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="/public/Product-reviews/Product-reviews.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aabhira Fashion - Customer Login</title>
+    <link rel="stylesheet" href="/public/login/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- IMPORTANT: Only ONE Firebase script tag -->
+    <script type="module">
+        // Check if Firebase is already initialized
+        if (!window.firebaseInitialized) {
+
+            const firebaseConfig = {
+              apiKey: "AIzaSyDvkzbzyMLAE8daV_m76b8AI9WtwUsgpNY",
+              authDomain: "aabhira-fashion-8c18f.firebaseapp.com",
+              projectId: "aabhira-fashion-8c18f",
+              storageBucket: "aabhira-fashion-8c18f.firebasestorage.app",
+              messagingSenderId: "1096926871024",
+              appId: "1:1096926871024:web:77b00a182f23794d93f135",
+              measurementId: "G-GFKHXVNW71"
+            };
+
+            // Initialize Firebase only once
+            window.firebaseInitialized = true;
+            
+            console.log("Firebase initialized successfully");
+        } else {
+            console.log("Firebase already initialized");
+        }
+    </script>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="auth-container">
+        <!-- Left Panel - Brand & Fashion Showcase -->
+        <div class="auth-left-panel">
+            <div class="brand-section">
+                <div class="logo-circle">AF</div>
+                <h1>Aabhira <span>Fashion</span></h1>
+                <p class="brand-tagline">Where Style Meets Comfort</p>
+            </div>
+            
+            <div class="fashion-showcase">
+                <div class="showcase-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Premium Collection</h3>
+                    <p>Latest fashion trends</p>
+                </div>
+                <div class="showcase-item">
+                    <i class="fas fa-truck"></i>
+                    <h3>Free Shipping</h3>
+                    <p>On orders above ₹999</p>
+                </div>
+                <div class="showcase-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Shopping</h3>
+                    <p>100% safe & secure</p>
+                </div>
+            </div>
+            
+            <div class="customer-testimonial">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Aabhira's collection is amazing! The quality and service are exceptional."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Priya Sharma</strong>
+                    <span>Loyal Customer</span>
+                </div>
+            </div>
+            
+            <div class="fashion-trends">
+                <h4>Trending Now</h4>
+                <div class="trends-grid">
+                    <span>Summer Dresses</span>
+                    <span>Casual Wear</span>
+                    <span>Ethnic Wear</span>
+                    <span>Winter Collection</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Panel - Authentication Forms -->
+        <div class="auth-right-panel">
+            <!-- Tabs Navigation -->
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login" id="loginTab">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="tab-btn" data-tab="signup" id="signupTab">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+                <button class="tab-btn" data-tab="phone" id="phoneTab">
+                    <i class="fas fa-mobile-alt"></i> Phone Login
+                </button>
+            </div>
+            
+            <!-- Messages Display -->
+            <div id="authMessage" class="auth-message"></div>
+            
+            <!-- Forms Container -->
+            <div class="forms-container">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-header">
+                        <h2>Welcome Back!</h2>
+                        <p>Sign in to your account</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required autocomplete="email">
+                        <div class="error-message" id="loginEmailError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password">
+                            <button type="button" class="toggle-password" id="toggleLoginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="loginPasswordError"></div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary" id="loginBtn">
+                        <span class="button-text">Sign In</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+                    
+                    <button type="button" class="social-btn google" id="googleLoginBtn">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                        Continue with Google
+                    </button>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="signupForm" class="auth-form">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Join our fashion community</p>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="firstName">
+                                <i class="fas fa-user"></i> First Name
+                            </label>
+                            <input type="text" id="firstName" placeholder="John" required autocomplete="given-name">
+                        </div>
+                        <div class="input-group">
+                            <label for="lastName">
+                                <i class="fas fa-user"></i> Last Name
+                            </label>
+                            <input type="text" id="lastName" placeholder="Doe" required autocomplete="family-name">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signupEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="signupEmail" placeholder="your@email.com" required autocomplete="email">
+                        <div class="error-message" id="signupEmailError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signupPhone">
+                            <i class="fas fa-phone"></i> Phone Number (Optional)
+                        </label>
+                        <input type="tel" id="signupPhone" placeholder="+91 98765 43210" autocomplete="tel">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="signupPassword">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="signupPassword" placeholder="Minimum 6 characters" required autocomplete="new-password" minlength="6">
+                                <button type="button" class="toggle-password" id="toggleSignupPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmPassword">
+                                <i class="fas fa-lock"></i> Confirm Password
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" placeholder="Re-enter password" required autocomplete="new-password">
+                                <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="passwordStrengthBar"></div>
+                        </div>
+                        <span class="strength-text" id="passwordStrengthText">Password strength</span>
+                    </div>
+                    
+                    <div class="error-message" id="confirmPasswordError"></div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span>I agree to <a href="#terms">Terms</a> & <a href="#privacy">Privacy Policy</a></span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" checked>
+                            <span>Subscribe to fashion updates & offers</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary" id="signupBtn">
+                        <span class="button-text">Create Account</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+                
+                <!-- Phone Login Form -->
+                <form id="phoneForm" class="auth-form">
+                    <div class="form-header">
+                        <h2>Phone Login</h2>
+                        <p>Enter your phone number to receive OTP</p>
+                    </div>
+                    
+                    <div class="phone-intro">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p>Quick login with phone number</p>
+                    </div>
+
+                    <!-- Phone Info Box -->
+                    <div class="phone-info-box">
+                        <p><strong>Note:</strong> Due to SMS quota restrictions (10 SMS/day for new projects), use test phone numbers:</p>
+                        <p>Add these numbers in Firebase Console → Authentication → Phone Testing:</p>
+                        <p><span class="test-number">+16505551234</span> (US Test) or <span class="test-number">+919999999999</span> (IN Test)</p>
+                        <p>Any 6-digit OTP works with test numbers.</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="phoneNumber">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <div class="phone-input-wrapper">
+                            <select id="countryCode">
+                                <option value="+91" selected>+91 (IN)</option>
+                                <option value="+1">+1 (US)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+61">+61 (AU)</option>
+                            </select>
+                            <input type="tel" id="phoneNumber" placeholder="98765 43210" required autocomplete="tel">
+                        </div>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    
+                    <!-- reCAPTCHA Container -->
+                    <div id="recaptcha-container"></div>
+                    
+                    <button type="submit" class="auth-btn primary" id="sendOTPBtn">
+                        <span class="button-text">Send OTP</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <!-- OTP Verification Section -->
+                    <div id="otpSection" class="otp-section">
+                        <div class="otp-header">
+                            <h4>Enter Verification Code</h4>
+                            <p>Sent to <span id="phoneDisplay"></span></p>
+                            <p class="resend-text">
+                                Didn't receive code? 
+                                <a href="#" class="resend-link" id="resendOTP">Resend</a>
+                                (<span id="otpTimer">30</span>s)
+                            </p>
+                        </div>
+                        
+                        <div class="otp-inputs">
+                            <input type="text" maxlength="1" class="otp-input" data-index="0" autocomplete="one-time-code" inputmode="numeric">
+                            <input type="text" maxlength="1" class="otp-input" data-index="1" autocomplete="one-time-code" inputmode="numeric">
+                            <input type="text" maxlength="1" class="otp-input" data-index="2" autocomplete="one-time-code" inputmode="numeric">
+                            <input type="text" maxlength="1" class="otp-input" data-index="3" autocomplete="one-time-code" inputmode="numeric">
+                            <input type="text" maxlength="1" class="otp-input" data-index="4" autocomplete="one-time-code" inputmode="numeric">
+                            <input type="text" maxlength="1" class="otp-input" data-index="5" autocomplete="one-time-code" inputmode="numeric">
+                        </div>
+                        
+                        <div class="error-message" id="otpError"></div>
+                        
+                        <button type="button" class="auth-btn primary" id="verifyOTPBtn">
+                            <span class="button-text">Verify OTP</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Forgot Password Form -->
+                <form id="forgotForm" class="auth-form">
+                    <div class="form-header">
+                        <h2>Reset Password</h2>
+                        <p>Enter your email to receive reset instructions</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="forgotEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="forgotEmail" placeholder="your@email.com" required autocomplete="email">
+                        <div class="error-message" id="forgotEmailError"></div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary" id="resetBtn">
+                        <span class="button-text">Send Reset Link</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="back-link">
+                        <a href="#" id="backToLogin">
+                            <i class="fas fa-arrow-left"></i> Back to Login
+                        </a>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Footer -->
+            <div class="auth-footer">
+                <p>By continuing, you agree to Aabhira Fashion's</p>
+                <p>
+                    <a href="#terms" class="footer-link">Terms of Service</a> • 
+                    <a href="#privacy" class="footer-link">Privacy Policy</a> • 
+                    <a href="#cookies" class="footer-link">Cookie Policy</a>
+                </p>
+                <p class="copyright">© 2024 Aabhira Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <!-- JavaScript Files - Load auth.js as regular script -->
+    <script src="/public/login/login.jsx"></script>
+    <script type="module" src="/src/services/firebase.jsx"></script>
+</body>
+</html>
